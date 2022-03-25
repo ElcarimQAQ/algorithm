@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1539603261 source:c:\users\10670\desktop\编程\杭电100\杭电100\2030.cpp
+	<stdio.h>
+	<iostream>
+	<string.h>
+	<math.h>
+
+1539607904 source:c:\users\10670\desktop\编程\杭电100\2023.cpp
+	<stdio.h>
+	<iostream>
+	<string.h>
+	<math.h>
+

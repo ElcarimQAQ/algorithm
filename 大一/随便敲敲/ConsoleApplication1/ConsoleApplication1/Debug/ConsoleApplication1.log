@@ -1,0 +1,7 @@
+﻿  ConsoleApplication1.cpp
+c:\users\10670\desktop\编程\随便敲敲\consoleapplication1\consoleapplication1\consoleapplication1.cpp(11): error C3861: “strlen”: 找不到标识符
+c:\users\10670\desktop\编程\随便敲敲\consoleapplication1\consoleapplication1\consoleapplication1.cpp(20): error C3861: “strlen”: 找不到标识符
+c:\users\10670\desktop\编程\随便敲敲\consoleapplication1\consoleapplication1\consoleapplication1.cpp(37): error C3861: “scanf”: 找不到标识符
+c:\users\10670\desktop\编程\随便敲敲\consoleapplication1\consoleapplication1\consoleapplication1.cpp(41): error C3861: “strcmp”: 找不到标识符
+c:\users\10670\desktop\编程\随便敲敲\consoleapplication1\consoleapplication1\consoleapplication1.cpp(42): error C3861: “printf”: 找不到标识符
+c:\users\10670\desktop\编程\随便敲敲\consoleapplication1\consoleapplication1\consoleapplication1.cpp(44): error C3861: “printf”: 找不到标识符
