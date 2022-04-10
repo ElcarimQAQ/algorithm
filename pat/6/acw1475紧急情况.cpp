@@ -47,7 +47,6 @@ int main() {
 
     dij();
     cout<<cnt[c2] <<' '<<num[c2]<<endl;
-    cout<<"ÄãºÃ£¡"<<endl;
-    
+
     return 0;
 }

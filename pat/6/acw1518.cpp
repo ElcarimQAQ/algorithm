@@ -22,7 +22,7 @@ void dfs(string u) {
     vis[u] = 1;
     cnt++;
     for(auto v : g[u]) {
-        total += v.second;
+        total += v.second; //bug3,所有能连的都加进来，才是实际长度2倍，不需要避免走过的点
         if(vis[v.first]) //没被访问过
             continue;
         if(w[v.first] > w[tou])
