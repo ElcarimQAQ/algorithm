@@ -12,20 +12,6 @@ int find(int x){
     return pre[x];  
 }
 
-
-void dfs(int u,int fa,int h)
-{
-    vis[u] = 1;
-    if(h > maxh)
-        maxh = h;
-    
-    for(auto  v : g[u]) {
-        if(v != fa && !vis[v]) {
-            dfs(v, u, h + 1);
-        }
-    }
-}
-
 void dfs2(int u,int fa,int h)
 {
     if(h > maxh)
@@ -58,13 +44,7 @@ int main()
             pre[find(u)] = find(v);
         }
     }
-    // while(i <= n) {
-    //     if(!vis[i]) { 
-    //         dfs(i, 0, 1);
-    //         cnt++;
-    //     }
-    //     else i++;
-    // }
+   
     if( cnt > 1) {
         printf("Error: %d components\n",cnt);
         return 0;
