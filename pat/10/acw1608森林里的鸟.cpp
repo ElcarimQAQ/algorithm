@@ -34,7 +34,6 @@ int main()
             cin>>b[i];
             bird.insert(b[i]);
             if(join(b[0], b[i]) == 0) cnt++;
-            cout<<cnt<<endl;
         }
     }
     cout<<bird.size() - cnt <<" " << bird.size()<<endl;
