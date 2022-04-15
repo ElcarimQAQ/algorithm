@@ -6,7 +6,12 @@
         "bitset": "cpp",
         "*.tcc": "cpp",
         "cmath": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "algorithm": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "sstream": "cpp",
+        "type_traits": "cpp"
     },
     "C_Cpp.clang_format_fallbackStyle": "WebKit"
 }
