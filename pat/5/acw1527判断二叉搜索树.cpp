@@ -8,26 +8,23 @@ vector<int> ans;
 
 bool build(int ql, int qr, int zl, int zr,int type)
 {
-    if(qr <= ql && zr <= zl)
+    if(zr < zl  && qr < ql)
         return true;
+    
     int p;
     int root = qx[ql];
     if(type == 0) {
-        for(int i = zl;i <= zr; i++)
-            if(zx[i] == root) {
-                p = i;
-                break;
-            }
-        return false;
+        for(p = zl; p <= zr; p++)
+            if(zx[p] == root) 
+                break;    
+        if(p > zr) return false;  //bug2, 判断能不能找到的条件需要注意
     }else {
-        for(int i = zr;i >= zl; i--)
-            if(zx[i] == root) {
-                p = i;
+        for(p = zr;p >= zl; p--)
+            if(zx[p] == root) 
                 break;
-            }
-        return false;
+        if(p < zl ) return false;
     }
-    if(!build(ql, ql + p -1 - zl, zl, p - 1, type)) 
+    if(!build(ql + 1 , ql + p - zl, zl, p - 1, type)) //bug3，根节点不在区间里头，记得去掉
         return false;
     if(!build(qr - (zr - p - 1) , qr, p + 1, zr, type)) 
         return false;
@@ -50,6 +47,7 @@ int main()
         for(auto  v : ans)
             cout<<v<<" ";
     } else {
+        ans.clear();  //bug1,ans忘记清空
         reverse(zx, zx + n);
         if(build(0, n-1, 0, n-1, 1)){
             cout<<"YES"<<endl;
@@ -58,9 +56,6 @@ int main()
         }
         else cout<<"NO"<<endl;
     }
-    for(auto  v : ans)
-                cout<<v<<" ";
- 
 
     return 0;
 }

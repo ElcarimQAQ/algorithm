@@ -3,64 +3,41 @@
 using namespace std;
 const int maxn = 10005;
 #define INF 0x3f3f3f3f
-int qx[maxn],zx[maxn],hx[maxn];
-vector<int> ans;
+int node[maxn];
+int t[maxn];
+int cnt = 0;
+int n;
+// void build(int l, int r,int n,int cnt) {
+//     if(r < l)
+//         return;
+//     int p;
+//     int h = log(n+1) / log(2) + 1; // log_2^(n+1)
+//     int lastN = n - pow(2,h - 1) + 1;
+//     if(lastN <= pow(2,h - 2)) p = pow(2, h-1) / 2 + lastN - 1;
+//     else p = pow(2, h) / 2 + lastN - pow(2,h - 2) - 1;
+//     int root = node[l + p];
+//     t[cnt] = root;
+//     build(l , l + p - 1, p - 1, cnt * 2);
+//     build(l + p + 1, r, n - p, cnt * 2 + 1);
+// }
 
-bool build(int ql, int qr, int zl, int zr,int type)
-{
-    if(qr <= ql && zr <= zl)
-        return true;
-    int p;
-    int root = qx[ql];
-    if(type == 0) {
-        for(int i = zl;i <= zr; i++)
-            if(zx[i] == root) {
-                p = i;
-                break;
-            }
-        return false;
-    }else {
-        for(int i = zr;i >= zl; i--)
-            if(zx[i] == root) {
-                p = i;
-                break;
-            }
-        return false;
-    }
-    if(!build(ql, ql + p -1 - zl, zl, p - 1, type)) 
-        return false;
-    if(!build(qr - (zr - p - 1) , qr, p + 1, zr, type)) 
-        return false;
-    ans.push_back(root);
-    return true;
+void dfs(int i) {
+    if(i * 2 <= n ) dfs(i*2);
+    t[i] = node[cnt++];
+    if(i*2 + 1 <= n) dfs(i*2 + 1);
 }
 
 int main()
 {
     std::ios::sync_with_stdio(false);
-    int n;
     cin>>n;
-    for(int i = 0;i < n; i++) {
-        cin >> qx[i];
-        zx[i] = qx[i];
-    }
-    sort(zx,zx + n);
-    if(build(0, n-1, 0, n-1, 0)) {
-        cout<<"YES"<<endl;
-        for(auto  v : ans)
-            cout<<v<<" ";
-    } else {
-        reverse(zx, zx + n);
-        if(build(0, n-1, 0, n-1, 1)){
-            cout<<"YES"<<endl;
-            for(auto  v : ans)
-                cout<<v<<" ";
-        }
-        else cout<<"NO"<<endl;
-    }
-    for(auto  v : ans)
-                cout<<v<<" ";
- 
-
+    for(int i = 0 ;i < n;i++)
+        cin>>node[i];
+    sort(node , node + n );
+    // build(0 , n - 1, n, 1);
+    dfs(1);
+    for(int i = 1;i <= n; i++)
+        cout<<t[i]<<" ";
+    // cout<<root;
     return 0;
 }
