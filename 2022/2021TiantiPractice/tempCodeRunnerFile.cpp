@@ -1,14 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define INF 0x3f3f3f3f
-const int maxn = 20005;
+const int maxn = 10005;
 vector<int> g[maxn];
 int pre[maxn],h[maxn];
 int node[maxn]; //高度下最小点
 int len = 0;
-int e;
 stack<int> road;
-void dfs(int u,int fa,string road) {
+void dfs(int u,int fa) {
     for(auto v : g[u]) {
         if(v == fa) continue;
         h[v] = h[u] + 1;
@@ -20,15 +19,15 @@ void dfs(int u,int fa,string road) {
 
 void print(int p) 
 {
+    cout<<p;
     while(pre[p] != -1) {
         road.push(pre[p]);
         p = pre[p];
     }
     while(!road.empty()) {
-        cout<<road.top()<<" ";
+        cout<<" "<<road.top();
         road.pop();
     }
-    cout<<e<<endl;
 }
 
 int main() 
@@ -56,9 +55,9 @@ int main()
     }
     h[head] = 1;
     dfs(head, -1);
-    e = node[len];
+    int end = node[len];
     cout<<len<<endl;
-    print(e);
+    print(end);
 
     return 0;
 }
