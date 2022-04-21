@@ -1,26 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define INF 0x3f3f3f3f
-const int maxn = 10050;
+const int maxn = 10005;
 vector<int> g[maxn];
 int pre[maxn];
 int len = 0;
 
-vector<string> ans;
+vector<int> ans,road;
 
-void dfs(int u,int fa,string road) {
+void dfs(int u) {
     for(auto v : g[u]) {
-        string next = road ;
-        next.push_back(v +'0');
-        dfs(v, u, next);
+        road.push_back(v);
+        dfs(v);
+        road.pop_back();
     }
     if(g[u].size() == 0) {
-        if((int) road.size() > len) {
-            len = (int) road.size();
-            ans.clear();
+        if( road.size() > len) {
+            len = road.size();
+            ans = road;
         }
-        if((int) road.size() == len) 
-            ans.push_back(road);
+        if(road.size() == len) 
+            ans = min(ans,road);
     }
 }
 
@@ -28,9 +28,11 @@ void dfs(int u,int fa,string road) {
 int main() 
 {
     std::ios::sync_with_stdio(false);
+    ans.reserve(maxn);
+    
     int n , k, u, head;
     cin>>n;
-    for(int i= 0; i< n; i++) 
+    for(int i= 0; i < n; i++) 
         pre[i] = -1;
     
     for(int i = 0; i< n; i++) {
@@ -47,15 +49,13 @@ int main()
             break;
         }
     }
-    string str = "";
-    str.push_back(head +'0');
-    dfs(head, -1, str);
+    road.push_back(head);
+    dfs(head);
 
     cout<<len<<endl;
-    sort(ans.begin(),ans.end());
-    for(int i = 0;i< ans[0].size();i ++){ 
-        if(i == ans[0].size() - 1) cout<<ans[0][i]<<endl;
-        else cout<<ans[0][i]<<" ";
+    for(int i = 0;i< ans.size();i ++){ 
+        if(i == ans.size() - 1) cout<<ans[i]<<endl;
+        else cout<<ans[i]<<" ";
     }
     return 0;
 }

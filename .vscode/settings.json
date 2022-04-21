@@ -11,7 +11,18 @@
         "istream": "cpp",
         "limits": "cpp",
         "sstream": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "string_view": "cpp",
+        "iosfwd": "cpp",
+        "array": "cpp",
+        "memory": "cpp",
+        "future": "cpp",
+        "functional": "cpp",
+        "tuple": "cpp",
+        "utility": "cpp"
     },
     "C_Cpp.clang_format_fallbackStyle": "WebKit"
 }
