@@ -6,11 +6,12 @@ int main(){
     cin>>n;
     vector<pair<int,int > > ans;
     m = n;
-    int cnt = 0;
+    
     if(n == 1) {
         cout<<"1=1";
         return 0;
     }
+    int cnt = 0;
     for(int i = 2 ;i <= sqrt(m); i++) {
         if( n % i == 0) {
             ans.push_back({i, 0});
