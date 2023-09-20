@@ -1,36 +1,32 @@
-#include<bits/stdc++.h>
 #include <iostream>
+#include <string>
+#include <fstream>
+#include <bits/stdc++.h>
+
 using namespace std;
-const int maxn  = 20005;
-string s1,s2;
-set<char> vis;
-map<char,int> mp;
-bool check(int l,int r)
-{
-    mp.clear();
-    for(int i = l;i <= r;i++){
-        // cout<<i << r<<endl;
-        // cout<<s1[i]<<endl;
-        if(vis.count(s1[i]) == 0 || mp[s1[i]] == 1){
-            return false;   
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        list<int> num1, num2;
+        for(int i = 0; i < m; i++) 
+            num1.push_back(nums1[i]);
+        for(int i = 0; i < n; i++) 
+            num2.push_back(nums2[i]);
+        int i, j= 0;
+        while(i< m  || j < n) {
+            if (nums1[i] <= nums2[j]) {
+                num1.insert(next(num1.begin()), nums2[j]);
+                j++;
+            }
+            else {
+                num1.insert(prev(num1.begin()), nums2[j]);
+                i++;
+            }
         }
-        mp[s1[i]] = 1;
-    }    
-    return true;
-}
-int main() {
-    cin>>s1>>s2;
-    for(int i = 0;i< s2.size();i++){
-        vis.insert(s2[i]);  
+        int idx = 0;
+        for (auto c: num1)
+            nums1[idx++] = c;
     }
-    int ans = 0;
-    int n = s1.size(),m = s2.size();
-    for(int i = 0;i < n;i++){
-        int j  = i + m ;
-        if(check(i,j-1)){
-            ans = i;
-            break;
-        }
-    }
-    cout << ans << endl;
-}
+};
+ 
