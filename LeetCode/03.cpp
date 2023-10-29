@@ -14,10 +14,10 @@ class Solution {
 
 };
 
-// int main()
-// {
-//     Solution s ;
-//     vector<int> nums = {1,3,2,1};
-//     cout<<s.findRepeatNumber(nums)<<endl;;
-//     return 0;
-// }
+int main()
+{
+    Solution s ;
+    vector<int> nums = {1,3,2,1};
+    cout<<s.findRepeatNumber(nums)<<endl;
+    return 0;
+}
