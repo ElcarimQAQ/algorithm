@@ -24,3 +24,5 @@ class Solution:
         return ans        
 # @lc code=end
 
+s = "abcabcbb"
+print(Solution().lengthOfLongestSubstring(s))
